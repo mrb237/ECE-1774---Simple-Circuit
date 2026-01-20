@@ -3,8 +3,10 @@
 import numpy as np
 import pandas as pd
 
+from Bus import Bus
+
 class Load:
-    def __init__(self, name, bus1, p, v):
+    def __init__(self, name:str, bus1:Bus, p:float, v:float):
         self.name = name
         self.bus1 = bus1
         self.p = p
