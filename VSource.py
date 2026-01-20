@@ -11,8 +11,13 @@ class VSource:
         self.bus1 = bus1
         self.v = v
 
+        self.bus1.set_bus_v(self.v) # Possibly change
+
 if __name__ == '__main__':
-    vsource1 = VSource("VSource1", "A", 9.0)
-    print(f"VSource1 Name: {vsource1.name}")
-    print(f"VSource1 First Bus: {vsource1.bus1} Volts")
-    print(f"VSource1 Voltage: {vsource1.v} Volts")
+    a = Bus("A")
+    vsource1 = VSource("VSource1", a, 9.0)
+
+    print(f"VSource Name: {vsource1.name}")
+    print(f"Connected Bus: {vsource1.bus1.name}")
+    print(f"Source Voltage: {vsource1.v} Volts")
+    print(f"Bus Voltage after source creation: {a.v} Volts")
