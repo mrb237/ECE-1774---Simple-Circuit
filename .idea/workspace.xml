@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0924ef7b-cceb-4a5e-88ad-1a9a348f97ae" name="Changes" comment="Milestone 2 - Fix Load Class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Load.py" beforeDir="false" afterPath="$PROJECT_DIR$/Load.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resistor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Resistor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Circuit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Circuit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +21,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Milestone-2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -62,7 +66,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.VSource">
+  <component name="RunManager" selected="Python.Bus">
     <configuration name="Bus" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Simple Circuit - ECE 1774" />
       <option name="ENV_FILES" value="" />
@@ -158,9 +162,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.VSource" />
-        <item itemvalue="Python.Bus" />
         <item itemvalue="Python.Resistor" />
         <item itemvalue="Python.Load" />
+        <item itemvalue="Python.Bus" />
+        <item itemvalue="Python.VSource" />
       </list>
     </recent_temporary>
   </component>
@@ -213,6 +218,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Process" />
