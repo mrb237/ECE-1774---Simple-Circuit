@@ -11,11 +11,14 @@ class Resistor:
         self.bus1 = bus1
         self.bus2 = bus2
         self.r = r
-        self.g = 0.0 # Default until calculated with calc_g()
+        self.g = self.calc_g()# Default until calculated with calc_g()
+
+        if self.r <= 0:
+            raise ValueError("Resistor resistance r must be > 0.")
 
 
     def calc_g(self):
-        self.g = 1/self.r
+        return 1.0/self.r
 
 if __name__ == '__main__':
     a = Bus("A")
@@ -24,7 +27,7 @@ if __name__ == '__main__':
     resistor1.calc_g()
 
     print(f"Resistor1 Name: {resistor1.name}")
-    print(f"Resistor1 First Bus: {resistor1.bus1}")
-    print(f"Resistor1 First Bus: {resistor1.bus2}")
+    print(f"Resistor1 First Bus: {resistor1.bus1.name}")
+    print(f"Resistor1 Second Bus: {resistor1.bus2.name}")
     print(f"Resistor1 Resistance: {resistor1.r} Ohms")
     print(f"Resistor1 Conductance: {resistor1.g} Siemens")
