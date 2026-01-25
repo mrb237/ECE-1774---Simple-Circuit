@@ -19,32 +19,60 @@ class Circuit:
         self.vsource = None # Default
         self.i = 0.0 # Default
 
-        def add_bus(self, new_bus: Bus):
-            bus_name = new_bus.name
 
-            if bus_name in self.buses:
-                raise ValueError(f"Bus '{bus_name}' already exists.")
-            self.buses[bus_name] = new_bus
+    def add_bus(self, new_bus:Bus):
+        bus_name = new_bus.name
 
-
-        def add_resistor_element(self, name:str, bus1:Bus, bus2:Bus, r:float):
-            
+        if new_bus.name in self.buses:
+            raise ValueError(f"Bus '{bus_name}' already exists.")
+        self.buses[bus_name] = new_bus
 
 
-        def add_load_element(self, name:str,bus1:Bus, p:float, v:float):
+    def add_resistor_element(self, name:str, bus1:Bus, bus2:Bus, r:float):
+        if name in self.resistors:
+            raise ValueError(f"Resistor '{name}' already exists.")
+        self.resistors[name] = Resistor(name, bus1, bus2, r)
 
 
-
-        def add_vsource_element(self, name:str, bus1:Bus, v:float):
-
-
-
-        def set_i(self, i:float):
+    def add_load_element(self, name:str,bus1:Bus, p:float, v:float):
+        if name in self.loads:
+            raise ValueError(f"Load '{name}' already exists.")
+        self.loads[name] = Load(name, bus1, p, v)
 
 
+    def add_vsource_element(self, name:str, bus1:Bus, v:float):
+        self.vsource = VSource(name, bus1, v)
 
-        def print_nodal_voltage(self):
+
+    def set_i(self, i:float):
+        self.i = i
 
 
+    def print_nodal_voltage(self):
+        for bus_name, bus_obj in self.buses.items():
+            print(f"Bus {bus_name} Voltage: {bus_obj.v} V")
 
-        def print_circuit_current(self):
+
+    def print_circuit_current(self):
+        print(f"Circuit Current: {self.i} A")
+
+
+if __name__ == "__main__":
+    c = Circuit("SimpleCircuit")
+
+    a = Bus("A")
+    b = Bus("B")
+
+    c.add_bus(a)
+    c.add_bus(b)
+
+    c.add_vsource_element("V1", a, 10.0)
+    c.add_resistor_element("R1", a, b, 5.0)
+    c.add_load_element("L1", b, 20.0, 10.0)
+
+    print("Buses:", list(c.buses.keys()))
+    print("Resistors:", list(c.resistors.keys()))
+    print("Loads:", list(c.loads.keys()))
+    print("VSource:", c.vsource.name if c.vsource else None)
+
+    c.print_nodal_voltage()

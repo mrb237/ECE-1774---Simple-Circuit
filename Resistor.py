@@ -11,10 +11,11 @@ class Resistor:
         self.bus1 = bus1
         self.bus2 = bus2
         self.r = r
-        self.g = self.calc_g()# Default until calculated with calc_g()
 
         if self.r <= 0:
             raise ValueError("Resistor resistance r must be > 0.")
+
+        self.g = self.calc_g()# Default until calculated with calc_g()
 
 
     def calc_g(self):
