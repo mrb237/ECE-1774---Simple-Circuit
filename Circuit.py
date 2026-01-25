@@ -70,9 +70,27 @@ if __name__ == "__main__":
     c.add_resistor_element("R1", a, b, 5.0)
     c.add_load_element("L1", b, 20.0, 10.0)
 
+    r_series = next(iter(c.resistors.values()))
+    load = next(iter(c.loads.values()))
+
+    Vs = c.vsource.v
+    R1 = r_series.r
+    RL = load.r
+
+    I = Vs / (R1+RL)
+    c.set_i(I)
+
+    Vb = I * RL
+    c.buses["B"].set_bus_v(Vb)
+
     print("Buses:", list(c.buses.keys()))
-    print("Resistors:", list(c.resistors.keys()))
-    print("Loads:", list(c.loads.keys()))
-    print("VSource:", c.vsource.name if c.vsource else None)
+    print("Resistors:")
+    for r_name, r_obj in c.resistors.items():
+        print(f"  {r_name}: R = {r_obj.r} Ohms, G = {r_obj.g} Siemens")
+    print("Loads:")
+    for l_name, l_obj in c.loads.items():
+        print(f"  {l_name}: P = {l_obj.p} W, V_nom = {l_obj.v} V, R = {l_obj.r} Ohms, G = {l_obj.g} Siemens")
+    print(f"VSource: {c.vsource.name}, V = {c.vsource.v} V, Bus = {c.vsource.bus1.name}")
 
     c.print_nodal_voltage()
+    c.print_circuit_current()
