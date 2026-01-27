@@ -1,0 +1,1 @@
+This project is a circuit solver that calculates the currents and voltages of a 2-bus system with one voltage source, resistor, and load. There are different branches for milestones 2-5 of this project, each branch shows the progression of the solver. 
