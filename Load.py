@@ -18,10 +18,10 @@ class Load:
             raise ValueError("Load nominal voltage v must be > 0.")
 
         self.r = (v ** 2) / p
-        self.g = self.calc_g() # Default until calculated with calc_g()
+        self.g = self._calc_g() # Default until calculated with calc_g()
 
 
-    def calc_g(self):
+    def _calc_g(self):
         return 1.0/self.r
 
 if __name__ == '__main__':
