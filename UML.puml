@@ -1,0 +1,78 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Bus {
+  +name: str
+  -_v: float
+  +v: float <<property>>
+  +v(new_v: float) <<setter>>
+}
+
+class Resistor {
+  +name: str
+  +bus1: Bus
+  +bus2: Bus
+  +r: float
+  +g: float
+  -_calc_g(): float
+}
+
+class Load {
+  +name: str
+  +bus1: Bus
+  +p: float
+  +v: float
+  +r: float
+  +g: float
+  -_calc_g(): float
+}
+
+class VSource {
+  +name: str
+  +bus1: Bus
+  +v: float
+}
+
+class Circuit {
+  +name: str
+  +buses: dict
+  +resistors: dict
+  +loads: dict
+  +vsource: VSource
+  +i: float
+  +add_bus(new_bus: Bus)
+  +add_resistor_element(name: str, bus1: Bus, bus2: Bus, r: float)
+  +add_load_element(name: str, bus1: Bus, p: float, v: float)
+  +add_vsource_element(name: str, bus1: Bus, v: float)
+  +set_i(i: float)
+  +print_nodal_voltage()
+  +print_circuit_current()
+}
+
+class Solution {
+  +circuit: Circuit
+  +do_power_flow()
+}
+
+class Main <<script>> {
+  +run()
+}
+
+' --- Relationships ---
+Circuit "1" o-- "0..*" Bus : buses (dict)
+Circuit "1" o-- "0..*" Resistor : resistors (dict)
+Circuit "1" o-- "0..*" Load : loads (dict)
+Circuit "1" o-- "0..1" VSource : vsource
+
+Resistor --> Bus : bus1
+Resistor --> Bus : bus2
+Load --> Bus : bus1
+VSource --> Bus : bus1
+
+Solution --> Circuit : uses
+
+Main --> Circuit : creates/uses
+Main --> Bus : creates
+Main --> Solution : creates/uses
+
+@enduml
