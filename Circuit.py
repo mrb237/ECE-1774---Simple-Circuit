@@ -81,7 +81,7 @@ if __name__ == "__main__":
     c.set_i(I)
 
     Vb = I * RL
-    c.buses["B"].set_bus_v(Vb)
+    c.buses["B"].v = Vb
 
     print("Buses:", list(c.buses.keys()))
     print("Resistors:")
