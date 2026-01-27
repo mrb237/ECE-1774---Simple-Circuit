@@ -11,7 +11,7 @@ class VSource:
         self.bus1 = bus1
         self.v = v
 
-        self.bus1 = self.v # Possibly change
+        self.bus1.v = self.v # Possibly change
 
 if __name__ == '__main__':
     a = Bus("A")
