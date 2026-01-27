@@ -17,25 +17,25 @@ class Circuit:
         self.loads = {}
 
         self.vsource = None # Default
-        self.i = 0.0 # Default
+        self.i = None # Default
 
 
     def add_bus(self, new_bus:Bus):
         bus_name = new_bus.name
 
-        if new_bus.name in self.buses:
+        if new_bus.name in self.buses.keys():
             raise ValueError(f"Bus '{bus_name}' already exists.")
         self.buses[bus_name] = new_bus
 
 
     def add_resistor_element(self, name:str, bus1:Bus, bus2:Bus, r:float):
-        if name in self.resistors:
+        if name in self.resistors.keys():
             raise ValueError(f"Resistor '{name}' already exists.")
         self.resistors[name] = Resistor(name, bus1, bus2, r)
 
 
     def add_load_element(self, name:str,bus1:Bus, p:float, v:float):
-        if name in self.loads:
+        if name in self.loads.keys():
             raise ValueError(f"Load '{name}' already exists.")
         self.loads[name] = Load(name, bus1, p, v)
 

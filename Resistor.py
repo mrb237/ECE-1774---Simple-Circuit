@@ -15,10 +15,10 @@ class Resistor:
         if self.r <= 0:
             raise ValueError("Resistor resistance r must be > 0.")
 
-        self.g = self.calc_g()# Default until calculated with calc_g()
+        self.g = self._calc_g()# Default until calculated with calc_g()
 
 
-    def calc_g(self):
+    def _calc_g(self):
         return 1.0/self.r
 
 if __name__ == '__main__':
