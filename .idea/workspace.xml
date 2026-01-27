@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0924ef7b-cceb-4a5e-88ad-1a9a348f97ae" name="Changes" comment="Milestone 3">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Circuit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Circuit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VSource.py" beforeDir="false" afterPath="$PROJECT_DIR$/VSource.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Soluion.py" beforeDir="false" afterPath="$PROJECT_DIR$/Solution.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,11 +184,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Circuit" />
         <item itemvalue="Python.VSource" />
-        <item itemvalue="Python.Bus" />
         <item itemvalue="Python.Resistor" />
         <item itemvalue="Python.Load" />
+        <item itemvalue="Python.Circuit" />
+        <item itemvalue="Python.Bus" />
       </list>
     </recent_temporary>
   </component>
