@@ -12,7 +12,7 @@ class Load:
         self.p = p
         self.v = v
         self.r = r
-        self.g = self.calc_g() # Default until calculated with calc_g()
+        self.g = self._calc_g() # Default until calculated with calc_g()
 
         if self.p <= 0:
             raise ValueError("Load real power p must be > 0.")
@@ -23,7 +23,7 @@ class Load:
 
         # self.r = (v**2) / p
 
-    def calc_g(self):
+    def _calc_g(self):
         return 1.0/self.r
 
 if __name__ == '__main__':
