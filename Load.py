@@ -28,6 +28,5 @@ class Load:
 
 if __name__ == '__main__':
     load1 = Load("Load1", "B", 2000.0, 100.0, 1.0)
-    load1.calc_g()
     print(f"Load1 Resistance: {load1.r} Ohms")
     print(f"Load1 Conductance: {load1.g} Siemens")
