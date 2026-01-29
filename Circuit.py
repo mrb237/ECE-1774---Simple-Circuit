@@ -20,25 +20,41 @@ class Circuit:
         self.i = None # Default
 
 
-    def add_bus(self, new_bus:Bus):
-        if new_bus.name in self.buses.keys():
-            raise ValueError(f"Bus '{new_bus.name}' already exists.")
-        self.buses[new_bus.name] = new_bus
+    def add_bus(self, name:str):
+        if name in self.buses.keys():
+            raise ValueError(f"Bus '{name}' already exists.")
+        self.buses[name] = Bus(name)
 
 
-    def add_resistor_element(self, name:str, bus1:Bus, bus2:Bus, r:float):
+    def add_resistor_element(self, name:str, bus1_name:str, bus2_name:str, r:float):
+        try:
+            bus1 = self.buses[bus1_name]
+            bus2 = self.buses[bus2_name]
+        except KeyError as e:
+            raise KeyError(f"Buses '{e.args[0]}' do not exist.")
+
         if name in self.resistors.keys():
             raise ValueError(f"Resistor '{name}' already exists.")
         self.resistors[name] = Resistor(name, bus1, bus2, r)
 
 
-    def add_load_element(self, name:str,bus1:Bus, p:float, v:float):
+    def add_load_element(self, name:str, bus1_name:str, p:float, v:float):
+        try:
+            bus1 = self.buses[bus1_name]
+        except KeyError as e:
+            raise KeyError(f"Buses '{e.args[0]}' do not exist.")
+
         if name in self.loads.keys():
             raise ValueError(f"Load '{name}' already exists.")
         self.loads[name] = Load(name, bus1, p, v)
 
 
-    def add_vsource_element(self, name:str, bus1:Bus, v:float):
+    def add_vsource_element(self, name:str, bus1_name:str, v:float):
+        try:
+            bus1 = self.buses[bus1_name]
+        except KeyError as e:
+            raise KeyError(f"Buses '{e.args[0]}' do not exist.")
+
         self.vsource = VSource(name, bus1, v)
 
 
@@ -58,15 +74,15 @@ class Circuit:
 if __name__ == "__main__":
     c = Circuit("SimpleCircuit")
 
-    a = Bus("A")
-    b = Bus("B")
+    # a = Bus("A")
+    # b = Bus("B")
 
-    c.add_bus(a)
-    c.add_bus(b)
+    c.add_bus("A")
+    c.add_bus("B")
 
-    c.add_vsource_element("V1", a, 10.0)
-    c.add_resistor_element("R1", a, b, 5.0)
-    c.add_load_element("L1", b, 20.0, 10.0)
+    c.add_vsource_element("V1", "A", 10.0)
+    c.add_resistor_element("R1", "A", "B", 5.0)
+    c.add_load_element("L1", "B", 20.0, 10.0)
 
     r_series = next(iter(c.resistors.values()))
     load = next(iter(c.loads.values()))
