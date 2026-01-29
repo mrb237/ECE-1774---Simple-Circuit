@@ -21,11 +21,9 @@ class Circuit:
 
 
     def add_bus(self, new_bus:Bus):
-        bus_name = new_bus.name
-
         if new_bus.name in self.buses.keys():
-            raise ValueError(f"Bus '{bus_name}' already exists.")
-        self.buses[bus_name] = new_bus
+            raise ValueError(f"Bus '{new_bus.name}' already exists.")
+        self.buses[new_bus.name] = new_bus
 
 
     def add_resistor_element(self, name:str, bus1:Bus, bus2:Bus, r:float):
