@@ -25,16 +25,16 @@ class Solution:
         r_series = next(iter(c.resistors.values()))
         load = next(iter(c.loads.values()))
 
-        Va = float(c.buses["A"].v)
+        va = float(c.buses["A"].v)
 
-        G_series = float(r_series.g)
-        G_load = float(load.g)
+        g_series = float(r_series.g)
+        g_load = float(load.g)
 
-        if G_series <= 0 or G_load <= 0:
+        if g_series <= 0 or g_load <= 0:
             raise ValueError("Conductances must be > 0.")
 
-        I = Va * (G_series * G_load) / (G_series + G_load)
-        c.set_i(I)
+        i = va * (g_series * g_load) / (g_series + g_load)
+        c.set_i(i)
 
-        Vb = I / G_load
-        c.buses["B"].v = Vb
+        vb = i / g_load
+        c.buses["B"].v = vb
