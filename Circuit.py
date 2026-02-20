@@ -7,6 +7,7 @@ from Bus import Bus
 from Resistor import Resistor
 from Load import Load
 from VSource import VSource
+from Breaker import Breaker
 
 class Circuit:
     def __init__(self, name:str):
@@ -15,6 +16,7 @@ class Circuit:
         self.buses = {}
         self.resistors = {}
         self.loads = {}
+        self.breakers = {}
 
         self.vsource = None # Default
         self.i = None # Default
@@ -54,9 +56,20 @@ class Circuit:
             bus1 = self.buses[bus1_name]
         except KeyError as e:
             raise KeyError(f"Buses '{e.args[0]}' do not exist.")
-
         self.vsource = VSource(name, bus1, v)
 
+    def add_breaker(self, name: str, node1: str, node2: str, is_closed: bool = True):
+        br = Breaker(name, node1, node2, is_closed=is_closed)
+        self.breakers[name] = br
+        return br
+
+    def is_connection_closed(self, node1: str, node2: str) -> bool:
+        for br in self.breakers.values():
+            a = br.node1
+            b = br.node2
+            if((a==node1 and b==node2) or (a==node2 and b==node1)):
+                return br.is_closed
+        return True
 
     def set_i(self, i:float):
         self.i = i

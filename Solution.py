@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from Circuit import Circuit
+from Breaker import Breaker
 
 
 class Solution:
@@ -21,6 +22,12 @@ class Solution:
             raise ValueError("This solver expects exactly ONE load.")
         if "A" not in c.buses or "B" not in c.buses:
             raise ValueError("Circuit must contain buses 'A' and 'B'.")
+        if not c.is_connection_closed("A", "B"):
+            c.set_i(0.0)
+            c.buses["A"].v = 0.0
+            c.buses["B"].v = 0.0
+        else:
+            pass
 
         r_series = next(iter(c.resistors.values()))
         load = next(iter(c.loads.values()))
